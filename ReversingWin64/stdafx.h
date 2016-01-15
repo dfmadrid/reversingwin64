@@ -26,5 +26,5 @@ class Informer{
 	public:
 		Informer();
 		~Informer();
-		void Informer::PrintEvent(Event evt);
+		void Informer::PrintEvent(Event* evt);
 };

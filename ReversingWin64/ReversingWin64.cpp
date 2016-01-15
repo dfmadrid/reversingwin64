@@ -5,9 +5,9 @@
 
 Informer::Informer(){};
 Informer::~Informer(){};
-void Informer::PrintEvent(Event evt)
+void Informer::PrintEvent(Event* evt)
 {
-	_tprintf(evt.msg);
+	_tprintf(evt->msg);
 }
 
 void invokeAFunction(){
@@ -33,7 +33,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	evt.type = SUCCESS_MSG;
 	evt.msg = _T("Program ended correctly \n");
 
-	informer.PrintEvent(evt);
+	informer.PrintEvent(&evt);
 	
 	return 0;
 }
