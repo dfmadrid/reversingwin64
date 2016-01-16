@@ -19,14 +19,14 @@ void invokeAFunction(){
 int _tmain(int argc, _TCHAR* argv[])
 {
 	Informer informer;
-	_TCHAR* msg;
+	_TCHAR msg[100];
 
 	invokeAFunction();
 
-	msg = _T("Calling a function with 7 arguments: %d %d %f %f %x %s \n");
+	wcscpy_s(msg, _T("Calling a function with 7 arguments: %d %d %f %f %x %s \n"));
 	_tprintf(msg, 3, 5, 7.5, 5.0, 0x61, _T("lastArg"));
 
-	msg = _T("Calling a function with 7 arguments: %d %d %d %d %x %s \n");
+	wcscpy_s(msg, _T("Calling a function with 7 arguments: %d %d %d %d %x %s \n"));
 	_tprintf(msg, 3, 5, 7, 9, 0x61, _T("lastArg"));
 
 	Event evt;
