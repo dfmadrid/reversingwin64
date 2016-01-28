@@ -1,4 +1,4 @@
-# reversingwin64
+# ReversingWin64
 Examples used in the series of articles [Ingenieria-inversa-de-aplicaciones-Win64](http://www.sidertia.com/Home/Community/Blog/2016/01/25/Ingenieria-inversa-de-aplicaciones-Win64-I) 
 about reversing and exploiting in Windows 64 bits platforms published at www.sidertia.com
 
@@ -27,3 +27,27 @@ All the examples have been compiled with MS Visual Studio 2013 Ultimate. The exa
 
 ## The author
 David Fernandez with the help of Sidertia Security Team
+
+## License
+(The MIT License)
+
+Copyright (c) 2016 David Fernández Madrid <dfernandez@sidertia.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
