@@ -13,18 +13,3 @@
 
 
 // TODO: reference additional headers your program requires here
-
-const int SUCCESS_MSG = 0;
-const int FAIL_MSG = 1;
-
-struct Event{
-	int type;
-	_TCHAR* msg;
-};
-
-class Informer{
-	public:
-		Informer();
-		~Informer();
-		void Informer::PrintEvent(Event* evt);
-};

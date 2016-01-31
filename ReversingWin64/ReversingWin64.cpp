@@ -3,38 +3,47 @@
 
 #include "stdafx.h"
 
-Informer::Informer(){};
-Informer::~Informer(){};
-void Informer::PrintEvent(Event* evt)
-{
-	_tprintf(evt->msg);
+void functionA(int op1, double op2, _TCHAR* op3){
+
+	_TCHAR msg[100] = _T("Calling a function with 4 arguments: %d %f %s \n");
+
+	_tprintf(msg, op1, op2, op3);
+
 }
 
-void invokeAFunction(){
+void functionB(int op1, double op2, double op3, _TCHAR* op4){
 
-	_TCHAR* msg = _T("Calling a function with 4 arguments: %d %f %s \n");
-	_tprintf(msg, 3, 1.0, _T("lastArg"));
+	_TCHAR msg[100] = _T("Calling a function with 5 arguments: %d %f %f %s \n");
+
+	_tprintf(msg, op1, op2, op3, op4);
+}
+
+void functionC(int op1, double op2, double op3, int op4, int op5, _TCHAR* op6){
+
+	_TCHAR msg[100] = _T("Calling a function with 6 arguments: %d %f %f %d %d %s \n");
+
+	_tprintf(msg, op1, op2, op3, op4, op5, op6);
+}
+
+int invokeAFunction(){
+
+	int opInt = 3;
+	double opDouble = 7.5;
+	_TCHAR* opStr = _T("lastArg");
+
+	functionA(opInt, opDouble, opStr);
+	functionB(opInt, opDouble, opDouble, opStr);
+	functionC(opInt, opDouble, opDouble, opInt, opInt, opStr);
+
+	return 0;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Informer informer;
-	_TCHAR msg[100];
-
-	invokeAFunction();
-
-	wcscpy_s(msg, _T("Calling a function with 7 arguments: %d %d %f %f %x %s \n"));
-	_tprintf(msg, 3, 5, 7.5, 5.0, 0x61, _T("lastArg"));
-
-	wcscpy_s(msg, _T("Calling a function with 7 arguments: %d %d %d %d %x %s \n"));
-	_tprintf(msg, 3, 5, 7, 9, 0x61, _T("lastArg"));
-
-	Event evt;
-	evt.type = SUCCESS_MSG;
-	evt.msg = _T("Program ended correctly \n");
-
-	informer.PrintEvent(&evt);
+	int result = 0;
 	
-	return 0;
+	result = invokeAFunction();
+
+	return result;
 }
 
