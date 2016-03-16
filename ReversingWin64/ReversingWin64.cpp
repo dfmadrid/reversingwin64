@@ -24,23 +24,28 @@ void printMsg(char* msg, char* value){
 }
 
 void formatStrAbuse(){
-	_TCHAR msg[100];
+	_TCHAR format[100];
 	_TCHAR inStr[95];
 	size_t charsRead = 0;
 	char outStr[65];
-	char outMsg[100];
+	char asciiFormat[100];
 
-	memset(inStr, 0, sizeof(inStr));
-	memset(outStr, 0, sizeof(outStr));
-	memset(outMsg, 0, sizeof(outMsg));
+	while (true){
 
-	_cgetws_s(inStr, sizeof(inStr), &charsRead);
+		memset(inStr, 0, sizeof(inStr));
+		memset(outStr, 0, sizeof(outStr));
+		memset(asciiFormat, 0, sizeof(asciiFormat));
 
-	if (charsRead > 0){
-		_tcscpy_s(msg, sizeof(msg), _T("\nThe ascii string received as input is %s \n"));
-		multibyteToAscii(msg, outMsg);
-		multibyteToAscii(inStr, outStr);
-		printMsg(outMsg, outStr);
+		_tprintf(_T("Enter a string to convert to ASCII:\n"));
+
+		_cgetws_s(inStr, sizeof(inStr), &charsRead);
+
+		if (charsRead > 0){
+			_tcscpy_s(format, sizeof(format), _T("The ascii string received as input is %s \n"));
+			multibyteToAscii(format, asciiFormat);
+			multibyteToAscii(inStr, outStr);
+			printMsg(asciiFormat, outStr);
+		}
 	}
 }
 
