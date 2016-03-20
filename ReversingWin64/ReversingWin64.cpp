@@ -79,8 +79,9 @@ void loadAniIconFromFileMap(){
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+
 	loadAniIconFromFileMap();
 
-	return 0;
+return 0;
 }
 
