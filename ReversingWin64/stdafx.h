@@ -13,3 +13,7 @@
 
 
 // TODO: reference additional headers your program requires here
+
+#include <memory.h>
+#include <windows.h> 
+#include <excpt.h>
