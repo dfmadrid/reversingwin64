@@ -14,6 +14,9 @@
 
 // TODO: reference additional headers your program requires here
 
+#define _WIN32_WINNT 0x0502
+
 #include <memory.h>
 #include <windows.h> 
 #include <excpt.h>
+
