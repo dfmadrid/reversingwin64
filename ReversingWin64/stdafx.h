@@ -9,8 +9,10 @@
 
 #include <stdio.h>
 #include <tchar.h>
-#include <memory.h>
-
+#include <string.h>
+#include <Windows.h>
 
 
 // TODO: reference additional headers your program requires here
+
+#include "Logger.h"

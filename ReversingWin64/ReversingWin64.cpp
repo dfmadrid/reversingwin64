@@ -3,7 +3,26 @@
 
 #include "stdafx.h"
 
-int multibyteToAscii(_TCHAR* mbStr, char* asciiStr)
+class msgS :public BaseLogger{
+public:
+	char outStr[40];
+	msgS();
+	msgS(char* msg);
+	~msgS();
+	void logMsg(char* msg);
+};
+
+msgS::msgS():msgS("starting") {};
+msgS::msgS(char* msg){
+	printf(msg);
+}
+msgS::~msgS() {};
+
+void msgS::logMsg(char* msg){
+	printf(msg);
+}
+
+__declspec(noinline) int multibyteToAscii(_TCHAR* mbStr, char* asciiStr)
 {
 	int i = 0;
 
@@ -12,7 +31,7 @@ int multibyteToAscii(_TCHAR* mbStr, char* asciiStr)
 		{
 			return -1;
 		}
-		asciiStr[i] = (char) mbStr[i];
+		*asciiStr++ = (char) *mbStr++;
 	}
 
 	return i;
@@ -24,29 +43,25 @@ void printMsg(char* msg, char* value){
 }
 
 void formatStrAbuse(){
-	_TCHAR format[100];
-	_TCHAR inStr[95];
+	_TCHAR inStr[256];
 	size_t charsRead = 0;
-	char outStr[65];
-	char asciiFormat[100];
+	FileLogger specificLogger;
+	BaseLogger* logger = &specificLogger;
+	msgS specificMsg;
+	BaseLogger* msg = &specificMsg;
 
-	while (true){
-
-		memset(inStr, 0, sizeof(inStr));
-		memset(outStr, 0, sizeof(outStr));
-		memset(asciiFormat, 0, sizeof(asciiFormat));
+		memset(inStr, 0, _countof(inStr));
 
 		_tprintf(_T("Enter a string to convert to ASCII:\n"));
 
-		_cgetws_s(inStr, sizeof(inStr), &charsRead);
+		_cgetws_s(inStr, _countof(inStr), &charsRead);
 
 		if (charsRead > 0){
-			_tcscpy_s(format, sizeof(format), _T("The ascii string received as input is %s \n"));
-			multibyteToAscii(format, asciiFormat);
-			multibyteToAscii(inStr, outStr);
-			printMsg(asciiFormat, outStr);
+			multibyteToAscii(inStr, specificMsg.outStr);
+			logger->logMsg(specificMsg.outStr);
+			msg->logMsg("asdas");
 		}
-	}
+
 }
 
 int _tmain(int argc, _TCHAR* argv[])
