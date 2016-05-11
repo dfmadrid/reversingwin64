@@ -3,26 +3,7 @@
 
 #include "stdafx.h"
 
-class msgS :public BaseLogger{
-public:
-	char outStr[40];
-	msgS();
-	msgS(char* msg);
-	~msgS();
-	void logMsg(char* msg);
-};
-
-msgS::msgS():msgS("starting") {};
-msgS::msgS(char* msg){
-	printf(msg);
-}
-msgS::~msgS() {};
-
-void msgS::logMsg(char* msg){
-	printf(msg);
-}
-
-__declspec(noinline) int multibyteToAscii(_TCHAR* mbStr, char* asciiStr)
+int multibyteToAscii(_TCHAR* mbStr, char* asciiData)
 {
 	int i = 0;
 
@@ -31,43 +12,37 @@ __declspec(noinline) int multibyteToAscii(_TCHAR* mbStr, char* asciiStr)
 		{
 			return -1;
 		}
-		*asciiStr++ = (char) *mbStr++;
+		asciiData[i] = (char)mbStr[i];
 	}
 
 	return i;
 }
 
-void printMsg(char* msg, char* value){
-	
-	printf(msg, value);
-}
-
-void formatStrAbuse(){
+void vtableExploit(){
 	_TCHAR inStr[256];
 	size_t charsRead = 0;
 	FileLogger specificLogger;
 	BaseLogger* logger = &specificLogger;
-	msgS specificMsg;
-	BaseLogger* msg = &specificMsg;
+	AppEvent evt;
+	BaseEvent* appEvt = &evt;
 
-		memset(inStr, 0, _countof(inStr));
+	memset(inStr, 0, _countof(inStr) * sizeof(_TCHAR));
 
-		_tprintf(_T("Enter a string to convert to ASCII:\n"));
+	_tprintf(_T("Warning: all your keyboard input could be logged from now\n"));
 
-		_cgetws_s(inStr, _countof(inStr), &charsRead);
+	_cgetws_s(inStr, _countof(inStr) * sizeof(_TCHAR), &charsRead);
 
-		if (charsRead > 0){
-			multibyteToAscii(inStr, specificMsg.outStr);
-			logger->logMsg(specificMsg.outStr);
-			msg->logMsg("asdas");
-		}
-
+	if (charsRead > 0){
+		multibyteToAscii(inStr, appEvt->rawData);
+		appEvt->prepareEvent();
+		logger->logMsg(appEvt->eventData);
+	}
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	
-	formatStrAbuse();
+	vtableExploit();
 
 	return 0;
 }

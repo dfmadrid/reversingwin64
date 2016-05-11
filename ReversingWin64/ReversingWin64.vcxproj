@@ -149,6 +149,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AppEvent.cpp" />
+    <ClCompile Include="BaseEvent.cpp" />
     <ClCompile Include="BaseLogger.cpp" />
     <ClCompile Include="FileLogger.cpp" />
     <ClCompile Include="ReversingWin64.cpp" />

@@ -1,21 +1,16 @@
 #include "stdafx.h";
 
-FileLogger::FileLogger():FileLogger(L"C:\\Temp\\log.txt"){};
+FileLogger::FileLogger():FileLogger(L"C:\\Temp\\log.dat"){};
 
 FileLogger::FileLogger(LPCWSTR file){
-	logFile = new _TCHAR[92];
-	memset(logFile, 0, 92);
-	_tcscpy_s(logFile, 92, file);
+	memset(logFile, 0, _countof(logFile) * sizeof(_TCHAR));
+	_tcscpy_s(logFile, _countof(logFile), file);
 }
 
-FileLogger::FileLogger(LPCWSTR file, char* format):FileLogger(file){
-
-}
-
-void FileLogger::logMsg(char* msg){
+void FileLogger::logMsg(byte* msg){
 	HANDLE hFile;
 	DWORD dwBytesWritten = 0;
-	DWORD dwBytesToWrite = (DWORD)strlen(msg);
+	DWORD dwBytesToWrite = (DWORD)64;
 
 	hFile = CreateFile(logFile,
 		FILE_APPEND_DATA,
@@ -27,16 +22,14 @@ void FileLogger::logMsg(char* msg){
 
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
-		_tprintf(_T("Terminal failure: Unable to open file \"%s\" for write.\n"), logFile);
+		_tprintf(_T("Unable to open log file \"%s\" for write.\n"), logFile);
 		return;
 	}
 
 	if ((WriteFile(hFile, msg, dwBytesToWrite, &dwBytesWritten, NULL) == FALSE) && dwBytesWritten != dwBytesToWrite)
-		_tprintf(_T("Terminal failure: Unable to write to file \"%s\".\n"), logFile);
+		_tprintf(_T("Unable to write to log file \"%s\".\n"), logFile);
 	
 	CloseHandle(hFile);
 }
 
-FileLogger::~FileLogger(){
-	free(logFile);
-}
+FileLogger::~FileLogger(){}
