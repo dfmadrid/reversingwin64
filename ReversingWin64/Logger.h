@@ -28,12 +28,11 @@ private:
 
 class BaseEvent{
 public:
-	char rawData[40];
+	char rawData[32];
 	byte eventData[64];
 	BaseEvent();
 	virtual ~BaseEvent();
 	virtual void prepareEvent();
-	int multibyteToAscii(_TCHAR* mbStr, char* asciiStr);
 };
 
 class AppEvent:public BaseEvent{

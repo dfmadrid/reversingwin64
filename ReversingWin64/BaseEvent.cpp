@@ -2,7 +2,7 @@
 #include "stdafx.h";
 
 BaseEvent::BaseEvent() {
-	memset(rawData, 0, 40);
+	memset(rawData, 0, 32);
 	memset(eventData, 0, 64);
 };
 
