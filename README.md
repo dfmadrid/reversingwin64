@@ -5,9 +5,10 @@ about reversing and exploiting in Windows 64 bits platforms published at www.sid
 ## The articles
 Introductory course about reversing and exploiting Windows Native applications in modern operating systems covering the following topics:
 + x86_64 arquitecture
-+ PE32+ format
-+ Debugging optimized code
-+ Modern anti-exploit protections like Guard Stack and FIPS Guard
++ PE loader and PE32+ format
++ Dynamic analysis with WinDbg
++ Antidebugging techniques
++ Modern anti-exploit protections like Control Flow Guard, Memory Protection and Isolated Heap
 + Vulnerable code and exploitation
 
 ## The examples
@@ -23,7 +24,7 @@ To change to a specific branch:
 ```bash
 git checkout NameOfBranch
 ```
-All the examples have been compiled with MS Visual Studio 2013 Ultimate. The examples will be updated as soon as new articles are published.
+All the examples have been compiled with MS Visual Studio 2013 Ultimate or MS Visual Studio 2015 Community under Windows 8.1 Update 3. The examples will be updated as soon as new articles are published.
 
 ## The author
 David Fernandez with the help of Sidertia Security Team
