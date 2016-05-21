@@ -17,7 +17,6 @@ public:
 
 class FileLogger : public BaseLogger{
 public:
-	//char outStr[144];
 	FileLogger();
 	~FileLogger();
 	FileLogger(LPCWSTR path);
