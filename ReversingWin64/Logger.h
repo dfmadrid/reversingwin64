@@ -32,7 +32,6 @@ public:
 	BaseEvent();
 	virtual ~BaseEvent();
 	virtual void prepareEvent();
-	int multibyteToAscii(_TCHAR* mbStr, char* asciiStr);
 };
 
 class AppEvent:public BaseEvent{
